@@ -1,1 +1,146 @@
 @import '@economist/component-scenechanger';
+@import '@economist/component-font-neutra2';
+
+.mnv-ec-gallery-outer-wrapper {
+  /*position: absolute;
+  top: 0;
+  left: 0;*/
+  width: 100%;
+  max-width: 1191px;
+  min-width: 300px;
+  }
+
+.mnv-ec-gallery-inner-wrapper:before {
+  display: block;
+  content: "";
+  width: 100%;
+  padding-top: 56.25%;
+}
+
+.mnv-ec-gallery-inner-wrapper {
+  position: relative;
+  background-color: #E1E8F6; 
+}
+
+/* MAP */
+
+.mnv-ec-gallery-map-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right:0;
+    bottom:0;
+  }
+.mnv-ec-gallery-map-holder {
+    position: relative;
+    width: 100%;
+    height: 100%; }
+/*.mnv-ec-gallery-map-image {*/
+img{
+    position: absolute;
+    left: 0;
+    top: 0;
+    max-width: 100%;
+    max-height: 100%;
+  }
+/* Hide map */
+/*.mnv-ec-gallery-hideImage {*/
+img-hideImage {
+    opacity: 0;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out; }
+
+
+
+/* Wrapper for all 'nav' elements: title, caption and scenechanger*/
+.mnv-ec-gallery-nav-wrapper {
+  position: relative;
+  /*bottom: 0;*/
+  height: 90px;
+  width: 100%;
+  background-color: #393F43;
+}
+
+.mnv-ec-gallery-caption-outer-wrapper {
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-color: #393F43;
+  color: white; }
+.mnv-ec-gallery-scenechange-external-wrapper {
+  position: absolute;
+  background-color: #393F43; }
+.mnv-ec-gallery-scene-title-div {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 28%;
+  padding-top: 9px;
+  height: 90%;
+  padding-right: 2%;
+  text-align: right;
+  font-family: "Neutra2Display-Titling"; }
+.mnv-ec-gallery-scene-caption-div {
+  position: absolute;
+  left: 30%;
+  top: 0;
+  width: 67%;
+  height: 100%;
+  padding-top: 15px;
+  padding-left: 2%;
+  border-left: 1px solid #dadada;
+  text-align: left;
+  font-family: "Neutra2Display"; }
+
+/* Red slab */
+.mnv-ec-gallery-red-slab {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 10px;
+  background-color: #E3120B; }
+
+/* SMALL */
+.mnv-ec-gallery-small .mnv-ec-gallery-nav-wrapper {
+  height: 115px; }
+.mnv-ec-gallery-small .mnv-ec-gallery-caption-outer-wrapper {
+  width: 100%;
+  height: 60px; }
+.mnv-ec-gallery-small .mnv-ec-gallery-scenechange-external-wrapper {
+  left: 0;
+  top: 50px;
+  width: 100%;
+  height: 45px; }
+.mnv-ec-gallery-small .mnv-ec-gallery-scene-title-div {
+  font-size: 30px;
+  padding-top: 13px;
+  line-height: 112%;
+  padding-right: 5px;
+  height: 85px; }
+.mnv-ec-gallery-small .mnv-ec-gallery-scene-caption-div {
+  height: 80%;
+  font-size: 12px;}
+
+/* BIG */
+.mnv-ec-gallery-big .mnv-ec-gallery-nav-wrapper {
+  height: 90px; }
+.mnv-ec-gallery-big .mnv-ec-gallery-caption-outer-wrapper {
+  height: 80px;
+  width: 50%; }
+.mnv-ec-gallery-big .mnv-ec-gallery-scenechange-external-wrapper {
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 80px; }
+.mnv-ec-gallery-big .mnv-ec-gallery-scene-title-div {
+  font-size: 48px;
+  padding-right: 12px;
+  height: 70px; }
+.mnv-ec-gallery-big .mnv-ec-gallery-scene-caption-div {
+  height: 60%;
+  font-size: 18px;
+  padding-top: 17px;
+  line-height: 112%; }
