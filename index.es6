@@ -4,15 +4,14 @@
 import React from 'react';
 import SceneChanger from '@economist/component-scenechanger';
 import ImageCaption from '@economist/component-imagecaption';
-import ArticleStore from '@economist/component-articlestore';
 
-const articleStore = new ArticleStore('/content');
 export default class Gallery extends React.Component {
 
   static get propTypes() {
     return {
-      defaultSceneIndex: React.PropTypes.number,
       children: React.PropTypes.node,
+      defaultSceneIndex: React.PropTypes.number,
+      images: React.PropTypes.array,
       sizeThreshold: React.PropTypes.number,
       test: React.PropTypes.string,
     };
@@ -51,11 +50,6 @@ export default class Gallery extends React.Component {
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleResize);
-  }
-
-  // STORE (must be below Lifecycle methods)
-  static get store() {
-    return articleStore;
   }
 
   // HANDLE RESIZE
@@ -97,12 +91,11 @@ export default class Gallery extends React.Component {
 
   // RENDER
   render() {
-    const galleryArray = articleStore.getAll();
-    const sceneTotal = galleryArray.length;
+    const sceneTotal = this.props.images.length;
     const sceneIndex = this.state.sceneIndex;
-    const image = galleryArray[sceneIndex].attributes.image;
-    const title = galleryArray[sceneIndex].attributes.title;
-    const caption = galleryArray[sceneIndex].attributes.caption;
+    const image = this.props.images[sceneIndex].src;
+    const title = this.props.images[sceneIndex].title;
+    const caption = this.props.images[sceneIndex].caption;
     // Class name: big or small, with test:loaded class for scenechanger display
     let galleryOuterClass = 'mnv-ec-gallery-outer-wrapper ' + this.props.test;
     if (this.state.isSmall) {
