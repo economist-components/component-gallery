@@ -4,15 +4,15 @@
 import React from 'react';
 import SceneChanger from '@economist/component-scenechanger';
 import ImageCaption from '@economist/component-imagecaption';
+import ArticleStore from '@economist/component-articlestore';
 
+const articleStore = new ArticleStore('/content');
 export default class Gallery extends React.Component {
 
   static get propTypes() {
     return {
       defaultSceneIndex: React.PropTypes.number,
-      images: React.PropTypes.array,
       children: React.PropTypes.node,
-      galleryArray: React.PropTypes.array,
       sizeThreshold: React.PropTypes.number,
       test: React.PropTypes.string,
     };
@@ -21,53 +21,6 @@ export default class Gallery extends React.Component {
   static get defaultProps() {
     return {
       defaultSceneIndex: 0,
-      galleryArray: [
-        {
-          'image': './assets/None_1_v001.png',
-          'title': '1',
-          'caption': 'ONE RUSSIA',
-        },
-        {
-          'image': './assets/Chech_2_v001.png',
-          'title': '2',
-          'caption': 'THE FIRST TO GO?',
-        },
-        {
-          'image': './assets/Caucs_3_v001.png',
-          'title': '3',
-          'caption': 'CRACKS IN THE CAUCASUS',
-        },
-        {
-          'image': './assets/Tatar_4_v001.png',
-          'title': '4',
-          'caption': 'BACK TO THE FUTURE',
-        },
-        {
-          'image': './assets/Crim_5_v001.png',
-          'title': '5',
-          'caption': 'TARTAR SOURCE',
-        },
-        {
-          'image': './assets/Ural_6_v001.png',
-          'title': '6',
-          'caption': 'GOING IT ALONE...',
-        },
-        {
-          'image': './assets/Sib_7_v001.png',
-          'title': '7',
-          'caption': '...OR GOING TOGETHER',
-        },
-        {
-          'image': './assets/Other_8_v001.png',
-          'title': '8',
-          'caption': 'PANDORA\'S BOX',
-        },
-        {
-          'image': './assets/All_9_v001.svg',
-          'title': '9',
-          'caption': 'EX UNO, PLURES?',
-        },
-      ],
       sizeThreshold: 500,
     };
   }
@@ -86,6 +39,7 @@ export default class Gallery extends React.Component {
     };
   }
 
+
   // componentWillMount() {
   // }
 
@@ -99,6 +53,10 @@ export default class Gallery extends React.Component {
     window.removeEventListener('resize', this.handleResize);
   }
 
+  // STORE (must be below Lifecycle methods)
+  static get store() {
+    return articleStore;
+  }
 
   // HANDLE RESIZE
   // Responds to resize event by comparing component
@@ -139,11 +97,12 @@ export default class Gallery extends React.Component {
 
   // RENDER
   render() {
-    const sceneTotal = this.props.galleryArray.length;
+    const galleryArray = articleStore.getAll();
+    const sceneTotal = galleryArray.length;
     const sceneIndex = this.state.sceneIndex;
-    const image = this.props.galleryArray[sceneIndex].image;
-    const title = this.props.galleryArray[sceneIndex].title;
-    const caption = this.props.galleryArray[sceneIndex].caption;
+    const image = galleryArray[sceneIndex].attributes.image;
+    const title = galleryArray[sceneIndex].attributes.title;
+    const caption = galleryArray[sceneIndex].attributes.caption;
     // Class name: big or small, with test:loaded class for scenechanger display
     let galleryOuterClass = 'mnv-ec-gallery-outer-wrapper ' + this.props.test;
     if (this.state.isSmall) {

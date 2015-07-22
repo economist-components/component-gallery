@@ -1,0 +1,92 @@
+{
+  "page": {
+    "title": "This is a complete mystery to me!",
+    "meta": [
+      {
+        "property": "og:image",
+        "content": "http://local.demo.economist.com/sites/default/files/the-economist-logo.gif"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "id": "1",
+      "attributes": {
+        "title": "1",
+        "caption": "ONE RUSSIA",
+        "image": "/images/None_1_v001.png"
+      }
+    },
+    {
+      "id": "2",
+      "attributes": {
+        "title": "2",
+        "caption": "THE FIRST TO GO?",
+        "image": "/images/Chech_2_v001.png"
+      }
+    },
+    {
+      "id": "3",
+      "attributes": {
+        "title": "3",
+        "caption": "CRACKS IN THE CAUCASUS",
+        "image": "/images/Caucs_3_v001.png"
+      }
+    },
+    {
+      "id": "4",
+      "attributes": {
+        "title": "4",
+        "caption": "BACK TO THE FUTURE",
+        "image": "/images/Tatar_4_v001.png"
+      }
+    },
+    {
+      "id": "5",
+      "attributes": {
+        "title": "5",
+        "caption": "TARTAR SOURCE",
+        "image": "/images/Crim_5_v001.png"
+      }
+    },
+    {
+      "id": "6",
+      "attributes": {
+        "title": "6",
+        "caption": "GOING IT ALONE...",
+        "image": "/images/Ural_6_v001.png"
+      }
+    },
+    {
+      "id": "7",
+      "attributes": {
+        "title": "7",
+        "caption": "...OR GOING TOGETHER",
+        "image": "/images/Sib_7_v001.png"
+      }
+    },
+    {
+      "id": "8",
+      "attributes": {
+        "title": "8",
+        "caption": "PANDORA'S BOX",
+        "image": "/images/Other_8_v001.png"
+      }
+    },
+    {
+      "id": "9",
+      "attributes": {
+        "title": "9",
+        "caption": "EX UNO, PLURES?",
+        "image": "/images/All_9_v001.svg"
+      }
+    }
+  ]
+}
+
+
+
+
+
+
+
