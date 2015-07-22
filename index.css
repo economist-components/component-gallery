@@ -157,6 +157,10 @@ img{
   line-height: 112%; }
 
 /* OVERWRITE STYLES IN SCENECHANGER */
+.mnv-ec-scenechanger-arrow-wrapper-left, 
+.mnv-ec-scenechanger-arrow-wrapper-right {
+  margin: 0;
+}
 .mnv-ec-scenechanger-arrow-wrapper-left:hover { 
   background: #E3120B;
 }
@@ -179,14 +183,25 @@ img{
   display: block;
 }
 
-@media screen and (max-width: 700px) {
+
+@media screen and (max-width: 730px) {
   .mnv-ec-gallery-inner-wrapper:before {
     padding-top: 55.5%;
   }
 }
 @media screen and (max-width: 600px) {
   .mnv-ec-gallery-inner-wrapper:before {
+    padding-top: 55.25%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .mnv-ec-gallery-inner-wrapper:before {
     padding-top: 55%;
+  }
+}
+@media screen and (max-width: 350px) {
+  .mnv-ec-gallery-inner-wrapper:before {
+    padding-top: 54.75%;
   }
 }
 /*
