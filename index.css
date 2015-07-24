@@ -176,6 +176,7 @@ img{
 }
 .mnv-ec-scenechanger-dot {
   border-width: 6px;
+  margin: -6.05px 0 0 -6.05px;
 }
 .dot-highlight {
   border-color: #E3120B;
@@ -186,6 +187,7 @@ img{
 .loaded .mnv-ec-scenechanger-own-wrapper {
   display: block;
 }
+
 
 /*
 @media screen and (max-width: 730px) {
