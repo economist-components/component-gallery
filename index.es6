@@ -35,6 +35,7 @@ export default class Gallery extends React.Component {
       sceneIndex: props.defaultSceneIndex,
       isSmall: false,
       hideImage: false,
+      showPager: false,
     };
   }
 
@@ -45,7 +46,7 @@ export default class Gallery extends React.Component {
   componentDidMount() {
     this.handleResize();
     window.addEventListener('resize', this.handleResize);
-    this.props.test = 'loaded';
+    this.setState({ showPager: 'loaded' });
   }
 
   componentWillUnmount() {
@@ -97,7 +98,7 @@ export default class Gallery extends React.Component {
     const title = this.props.images[sceneIndex].title;
     const caption = this.props.images[sceneIndex].caption;
     // Class name: big or small, with test:loaded class for scenechanger display
-    let galleryOuterClass = 'mnv-ec-gallery-outer-wrapper ' + this.props.test;
+    let galleryOuterClass = 'mnv-ec-gallery-outer-wrapper ' + this.state.showPager;
     if (this.state.isSmall) {
       galleryOuterClass += ' mnv-ec-gallery-small';
     } else {
