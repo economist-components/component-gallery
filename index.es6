@@ -1,6 +1,3 @@
-// GALLERY
-/* global window */
-
 import React from 'react';
 import SceneChanger from '@economist/component-scenechanger';
 import ImageCaption from '@economist/component-imagecaption';
@@ -29,41 +26,18 @@ export default class Gallery extends React.Component {
   //    set default state
   constructor(props) {
     super(props);
-    this.handleResize = this.handleResize.bind(this);
     this.nextPassState = this.nextPassState.bind(this);
     this.state = {
       sceneIndex: props.defaultSceneIndex,
-      isSmall: false,
       hideImage: false,
       showPager: false,
     };
   }
 
-
-  // componentWillMount() {
-  // }
-
   componentDidMount() {
-    this.handleResize();
-    window.addEventListener('resize', this.handleResize);
-    this.setState({ showPager: 'loaded' });
+    this.setState({ showPager: 'Gallery-loaded' });
   }
 
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.handleResize);
-  }
-
-  // HANDLE RESIZE
-  // Responds to resize event by comparing component
-  // width with big/small threshold and setting state accordingly
-  handleResize() {
-    const width = React.findDOMNode(this).offsetWidth;
-    let resizeFlag = false;
-    if (width < this.props.sizeThreshold) {
-      resizeFlag = true;
-    }
-    this.setState({ isSmall: resizeFlag });
-  }
   // HANDLE RESIZE ends
 
   // NEXT PASS STATE
@@ -88,7 +62,6 @@ export default class Gallery extends React.Component {
       this.nextPassState(index);
     }, 550);
   }
-  // PASS STATE ends
 
   // RENDER
   render() {
@@ -97,52 +70,46 @@ export default class Gallery extends React.Component {
     const image = this.props.images[sceneIndex].src;
     const title = this.props.images[sceneIndex].title;
     const caption = this.props.images[sceneIndex].caption;
-    // Class name: big or small, with test:loaded class for scenechanger display
-    let galleryOuterClass = 'mnv-ec-gallery-outer-wrapper ' + this.state.showPager;
-    if (this.state.isSmall) {
-      galleryOuterClass += ' mnv-ec-gallery-small';
-    } else {
-      galleryOuterClass += ' mnv-ec-gallery-big';
-    }
+    // loaded class for scenechanger display
+    const galleryOuterClass = 'Gallery ' + this.state.showPager;
 
     // Image class-name: hidden or not
-    let mapHolderClass = 'mnv-ec-gallery-map-holder';
+    let galleryImagesState = 'Gallery--images-shown';
     if (this.state.hideImage) {
-      mapHolderClass += ' mnv-ec-gallery-map-holder-hidden';
+      galleryImagesState += ' Gallery--images-hidden';
     }
     // Image JSX
-    const mapWrapper = (
-      <div className = "mnv-ec-gallery-map-wrapper">
-        <div className = {mapHolderClass}>
+    const galleryImages = (
+      <div className = "Gallery--images">
+        <div className = {galleryImagesState}>
           <ImageCaption caption="" src={image}/>
         </div>
       </div>
     );
-    // Title and caption JSX
+    // Title and caption JSX.
     const captionDiv = (
-      <div className="mnv-ec-gallery-caption-outer-wrapper">
-        <div className="mnv-ec-gallery-scene-title-div">
+      <div className="Gallery--features-content">
+        <div className="Gallery--features-content-title">
           {title}
         </div>
-        <div className="mnv-ec-gallery-scene-caption-div">
+        <div className="Gallery--features-content--caption">
           {caption}
         </div>
       </div>
     );
-    // Glue it all together:
+    // Glue it all together.
     return (
       <div className={galleryOuterClass}>
-        <div className="mnv-ec-gallery-inner-wrapper">
-          {mapWrapper}
-          <div className="mnv-ec-gallery-nav-wrapper">
-            {captionDiv}
-            <div className="mnv-ec-gallery-scenechange-external-wrapper">
-              <SceneChanger
-                sceneTotal={sceneTotal}
-                defaultSceneIndex={sceneIndex}
-                onChangeIndex={this.passState.bind(this)}/>
-            </div>
-            <div className="mnv-ec-gallery-red-slab"/>
+        <div className="Gallery--slides">
+          {galleryImages}
+        </div>
+        <div className="Gallery--features">
+          {captionDiv}
+          <div className="Gallery--features-scenechange">
+            <SceneChanger
+              sceneTotal={sceneTotal}
+              defaultSceneIndex={sceneIndex}
+              onChangeIndex={this.passState.bind(this)}/>
           </div>
         </div>
       </div>
