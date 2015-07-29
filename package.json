@@ -65,7 +65,7 @@
     "build": "npm-assets ."
   },
   "dependencies": {
-    "@economist/component-scenechanger": "^1.3.7",
+    "@economist/component-scenechanger": "^2.0.0",
     "@economist/component-imagecaption": "^1.1.1",
     "@economist/component-font-neutra2": "^1.0.4",
     "react": "^0.13.3"

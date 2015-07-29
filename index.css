@@ -3,58 +3,31 @@
 
 .Gallery {
   width: 100%;
-  max-width: 1191px;
+  max-width: 1190px;
   min-width: 300px;
   margin-bottom: 20px;
-  }
-
-.Gallery--slides:before {
-  display: block;
-  content: "";
-  width: 100%;
-  padding-top: 56%;
-}
-
-.Gallery--slides {
-  position: relative;
-  background-color: inherit;
-}
-
-.Gallery--images {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right:0;
-  bottom:0;
 }
 
 .Gallery--images-shown {
-  position: relative;
   width: 100%;
   height: 100%;
-  margin-top:-22px;
   opacity: 1;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+  -webkit-transition: opacity .5s linear;
+  -moz-transition: opacity .5s linear;
+  -o-transition: opacity .5s linear;
+  transition: opacity .5s linear;
 }
 
 /* OVERWRITE IMG TAG IN COMPONENT-IMAGECAPTION */
+.Gallery--images figure {
+  margin: 0;
+}
 .Gallery--images img {
-  position: absolute;
-  left: 0;
-  top: 0;
-  max-width: 100%;
-  max-height: 100%;
+  display: block;
 }
 /* Hide map */
 .Gallery--images-hidden {
   opacity: 0;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
 }
 
 /* Wrapper for all 'nav' elements: title, caption and scenechanger*/
@@ -116,17 +89,17 @@
 
 @media screen and (max-width: 500px) {
   .Gallery--features {
-    height: 115px; 
+    height: 105px; 
   }
 
   .Gallery--features-content {
     width: 100%;
-    height: 60px; 
+    height: 50px; 
   }
 
   .Gallery--features-scenechange {
     left: 3%;
-    top: 55px;
+    top: 35px;
     width: 94%;
     height: 30px; 
   }
@@ -134,7 +107,7 @@
     font-size: 30px;
     line-height: 30px;
     padding-right: 5px;
-    height: 85px;
+    height: 35px;
   }
   .Gallery--features-content--caption {
     height: 55%;
@@ -145,27 +118,27 @@
 
 
 /* OVERWRITE STYLES IN SCENECHANGER */
-.mnv-ec-scenechanger-arrow-wrapper-left,
-.mnv-ec-scenechanger-arrow-wrapper-right {
+.SceneChanger-arrow-left,
+.SceneChanger-arrow-left {
   margin: 0;
 }
-.mnv-ec-scenechanger-arrow-wrapper-left:hover,
-.mnv-ec-scenechanger-arrow-wrapper-right:hover {
+.SceneChanger-arrow-left:hover,
+.SceneChanger-arrow-left:hover {
   background: #E3120B;
 }
-.mnv-ec-scenechanger-onedot-wrapper:hover {
+.SceneChanger-onedot-wrapper:hover {
   background-color: #E3120B;
 }
-.mnv-ec-scenechanger-dot {
+.SceneChanger-dot {
   border-width: 6px;
   margin: -6.05px 0 0 -6.05px;
 }
-.dot-highlight {
+.SceneChanger-dot-highlight {
   border-color: #E3120B;
 }
-.mnv-ec-scenechanger-own-wrapper {
+.SceneChanger {
   display: none;
 }
-.Gallery-loaded .mnv-ec-scenechanger-own-wrapper {
+.Gallery-loaded .SceneChanger {
   display: block;
 }
