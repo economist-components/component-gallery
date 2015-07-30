@@ -69,6 +69,8 @@ export default class Gallery extends React.Component {
     const sceneIndex = this.state.sceneIndex;
     const image = this.props.images[sceneIndex].src;
     const title = this.props.images[sceneIndex].title;
+    const alt = this.props.images[sceneIndex].alt;
+    const srcset = this.props.images[sceneIndex].srcset;
     const caption = this.props.images[sceneIndex].caption;
     // loaded class for scenechanger display
     const galleryOuterClass = 'Gallery ' + this.state.showPager;
@@ -82,7 +84,7 @@ export default class Gallery extends React.Component {
     const galleryImages = (
       <div className = "Gallery--images">
         <div className = {galleryImagesState}>
-          <ImageCaption caption="" src={image}/>
+          <ImageCaption caption="" src={image} alt={alt} srcset={srcset} />
         </div>
       </div>
     );
