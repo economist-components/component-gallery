@@ -118,9 +118,11 @@
 
 
 /* OVERWRITE STYLES IN SCENECHANGER */
-.SceneChanger-arrow-left,
 .SceneChanger-arrow-left {
-  margin: 0;
+  margin-right: 20px;
+}
+.SceneChanger-arrow-right {
+  margin-left: 20px;
 }
 .SceneChanger-arrow-left:hover,
 .SceneChanger-arrow-left:hover {
