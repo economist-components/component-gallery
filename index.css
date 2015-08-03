@@ -1,10 +1,9 @@
-@import '@economist/component-scenechanger';
+@import '@economist/component-pager';
 @import '@economist/component-font-neutra2';
 
 .Gallery {
   width: 100%;
   max-width: 1190px;
-  min-width: 300px;
   margin-bottom: 20px;
 }
 
@@ -18,7 +17,6 @@
   transition: opacity .5s linear;
 }
 
-/* OVERWRITE IMG TAG IN COMPONENT-IMAGECAPTION */
 .Gallery--images figure {
   margin: 0;
 }
@@ -30,9 +28,7 @@
   opacity: 0;
 }
 
-/* Wrapper for all 'nav' elements: title, caption and scenechanger*/
 .Gallery--features {
-  position: relative;
   height: 90px;
   width: 100%;
   background-color: #393F43;
@@ -40,54 +36,48 @@
 }
 
 .Gallery--features-content {
-  top: 0;
-  left: 0;
-  position: absolute;
+  float: left;
   background-color: #393F43;
   color: white;
-  height: 80px;
+  height: 100%;
   width: 50%; 
 }
 
 .Gallery--features-scenechange {
-  position: absolute;
+  float: left;
   background-color: #393F43;
-  top: 0;
-  left: 50%;
-  width: 48%;
-  height: 30px;
-  margin-top: 23px;
+  width: 50%;
+  height: 100%;
 }
 
 .Gallery--features-content-title {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 28%;
-  padding-top: 10px;
-  height: 90%;
-  padding-right: 2%;
+  width: calc(28% - 10px);
   text-align: right;
   font-family: "Neutra2Display-Titling";
-   font-size: 48px;
-  line-height: 48px;
+  font-size: 48px;
+  float: left;
+  margin: 0;
+  padding: 0;
+  padding: 10px 10px 0 0;
+  line-height: 0;
+  line-height: 40px;
+  height: calc(100% - 10px);
+  border-right: 1px solid #dadada;
 }
 
 .Gallery--features-content--caption {
-  position: absolute;
-  left: 30%;
-  top: 0;
-  width: 67%;
-  height: 100%;
-  padding-top: 10px;
-  padding-left: 2%;
-  border-left: 1px solid #dadada;
+  float: left;
+  width: calc(72% - 11px);
+  
+  margin: 0;
+  padding: 10px 0 0 10px;
+  
   text-align: left;
   font-family: "Neutra2Display-Medium";
-  line-height: 27px
+  font-size: 21px;
 }
 
-@media screen and (max-width: 500px) {
+/*@media screen and (max-width: 500px) {
   .Gallery--features {
     height: 105px; 
   }
@@ -114,33 +104,94 @@
     font-size: 14px;
     line-height: 18px;
   }
-}
+}*/
 
 
 /* OVERWRITE STYLES IN SCENECHANGER */
-.SceneChanger-arrow-left {
-  margin-right: 20px;
+.Pager {
+  height: 100%;
 }
-.SceneChanger-arrow-right {
-  margin-left: 20px;
+.Pager ul {
+  padding: 0;
+  margin: 15px 10px 0 0;
+  overflow: hidden;
+  float:right;
 }
-.SceneChanger-arrow-left:hover,
-.SceneChanger-arrow-left:hover {
-  background: #E3120B;
+
+.Pager li {
+  padding: 0 10px;
+  height: 60px;
 }
-.SceneChanger-onedot-wrapper:hover {
-  background-color: #E3120B;
+/* Arrows */
+.Pager .Pager-previous,
+.Pager .Pager-next {
+  padding: 0;
+  width: auto;
 }
-.SceneChanger-dot {
-  border-width: 6px;
-  margin: -6.05px 0 0 -6.05px;
+.Pager-previous svg,
+.Pager-next svg {
+  width: 60px;
+  height: 60px;
+  fill: #dadada;
 }
-.SceneChanger-dot-highlight {
-  border-color: #E3120B;
+.Pager-previous:hover svg,
+.Pager-next:hover svg {
+  fill: #e3120b;
 }
-.SceneChanger {
-  display: none;
-}
-.Gallery-loaded .SceneChanger {
+
+/* Actual dot */
+.Pager li span {
+  width: 0;
+  height: 0;
+  border: solid 6px #dadada;
+  border-radius: 6px;
+  background-color: #dadada;
+  text-indent: -20px;
+  overflow: hidden;
   display: block;
+  margin-top: 24px;
+}
+.Pager li:hover span {
+  border-color: #e3120b;
+}
+.Pager li .Pager-index-selected {
+  border-color: #e3120b;
+}
+@media screen and (max-width: 850px) {
+  .Pager li {
+    padding: 0 7px;
+  }
+}
+@media screen and (max-width: 730px) {
+  .Gallery--features-content {
+    width: 45%;
+  }
+  .Gallery--features-scenechange {
+    width: 55%;
+  }
+}
+@media screen and (max-width: 670px) {
+  .Gallery--features {
+     height: auto; 
+  }
+  .Gallery--features-content,
+  .Gallery--features-scenechange {
+    width: 100%;
+    float: none;
+  }
+  .Gallery--features-content-title {
+    width: 18%;
+  }
+  .Pager ul {
+    margin: 0;
+    float: none;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
 }

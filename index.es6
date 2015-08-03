@@ -1,5 +1,5 @@
 import React from 'react';
-import SceneChanger from '@economist/component-scenechanger';
+import Pager from '@economist/component-pager';
 import ImageCaption from '@economist/component-imagecaption';
 
 export default class Gallery extends React.Component {
@@ -63,6 +63,10 @@ export default class Gallery extends React.Component {
     }, 550);
   }
 
+  getSrcSet(image) {
+    return Object.keys(image).map((key) => `${image[key]} ${key}`).join(',');
+  }
+
   // RENDER
   render() {
     const sceneTotal = this.props.images.length;
@@ -80,11 +84,12 @@ export default class Gallery extends React.Component {
     if (this.state.hideImage) {
       galleryImagesState += ' Gallery--images-hidden';
     }
+
     // Image JSX
     const galleryImages = (
       <div className = "Gallery--images">
         <div className = {galleryImagesState}>
-          <ImageCaption caption="" src={image} alt={alt} srcset={srcset} />
+          <ImageCaption caption="" src={image} alt={alt} srcset={this.getSrcSet(srcset)} />
         </div>
       </div>
     );
@@ -108,10 +113,12 @@ export default class Gallery extends React.Component {
         <div className="Gallery--features">
           {captionDiv}
           <div className="Gallery--features-scenechange">
-            <SceneChanger
+            <Pager
               sceneTotal={sceneTotal}
               defaultSceneIndex={sceneIndex}
-              onChangeIndex={this.passState.bind(this)}/>
+              onChangeIndex={this.passState.bind(this)}
+              prevNext="arrows"
+              />
           </div>
         </div>
       </div>

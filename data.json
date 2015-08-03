@@ -3,63 +3,60 @@
     "title": "1",
     "caption": "ONE RUSSIAn",
     "src": "http://world-if-stage.elasticbeanstalk.com/assets/a798e3a7.svg",
-    "srcset": "/assets/4c111b53ecd5@1x.jpg 1.0x,/assets/4c111b53ecd5@1.3x.jpg 1.3x,/assets/4c111b53ecd5@1.4x.jpg 1.4x,/assets/4c111b53ecd5@1.6x.jpg 1.6x,/assets/4c111b53ecd5@2x.jpg 2.0x,/assets/4c111b53ecd5@2.6x.jpg 2.6x,/assets/4c111b53ecd5@3.3x.jpg 3.3x",
+    "srcset" : {
+      "1.0x": "/assets/1cab46323bec@1x.jpg",
+      "1.3x": "/assets/1cab46323bec@1.3x.jpg",
+      "1.4x": "/assets/1cab46323bec@1.4x.jpg",
+      "1.6x": "/assets/1cab46323bec@1.6x.jpg",
+      "2.0x": "/assets/1cab46323bec@2x.jpg",
+      "2.6x": "/assets/1cab46323bec@2.6x.jpg",
+      "3.3x": "/assets/1cab46323bec@3.3x.jpg"
+    },
     "alt": "this is the first alt"
   },
   {
     "title": "2",
     "caption": "THE FIRST TO GO?",
     "src": "http://world-if-stage.elasticbeanstalk.com/assets/3ff076cc.svg",
-    "srcset": "/assets/4c111b53ecd5@1x.jpg 1.0x,/assets/4c111b53ecd5@1.3x.jpg 1.3x,/assets/4c111b53ecd5@1.4x.jpg 1.4x,/assets/4c111b53ecd5@1.6x.jpg 1.6x,/assets/4c111b53ecd5@2x.jpg 2.0x,/assets/4c111b53ecd5@2.6x.jpg 2.6x,/assets/4c111b53ecd5@3.3x.jpg 3.3x",
+    "srcset": {
+      "1.0x": "/assets/1cab46323bec@1x.jpg",
+      "1.3x": "/assets/1cab46323bec@1.3x.jpg",
+      "1.4x": "/assets/1cab46323bec@1.4x.jpg",
+      "1.6x": "/assets/1cab46323bec@1.6x.jpg",
+      "2.0x": "/assets/1cab46323bec@2x.jpg",
+      "2.6x": "/assets/1cab46323bec@2.6x.jpg",
+      "3.3x": "/assets/1cab46323bec@3.3x.jpg"
+    },
     "alt": "this is the second alt"
   },
   {
     "title": "3",
     "caption": "CRACKS IN THE CAUCASUS",
     "src": "http://world-if-stage.elasticbeanstalk.com/assets/d81fa2d7.svg",
-    "srcset": "/assets/4c111b53ecd5@1x.jpg 1.0x,/assets/4c111b53ecd5@1.3x.jpg 1.3x,/assets/4c111b53ecd5@1.4x.jpg 1.4x,/assets/4c111b53ecd5@1.6x.jpg 1.6x,/assets/4c111b53ecd5@2x.jpg 2.0x,/assets/4c111b53ecd5@2.6x.jpg 2.6x,/assets/4c111b53ecd5@3.3x.jpg 3.3x",
+    "srcset": {
+      "1.0x": "/assets/1cab46323bec@1x.jpg",
+      "1.3x": "/assets/1cab46323bec@1.3x.jpg",
+      "1.4x": "/assets/1cab46323bec@1.4x.jpg",
+      "1.6x": "/assets/1cab46323bec@1.6x.jpg",
+      "2.0x": "/assets/1cab46323bec@2x.jpg",
+      "2.6x": "/assets/1cab46323bec@2.6x.jpg",
+      "3.3x": "/assets/1cab46323bec@3.3x.jpg"
+    },
     "alt": "this is the third alt"
   },
   {
     "title": "4",
     "caption": "BACK TO THE FUTURE",
     "src": "http://world-if-stage.elasticbeanstalk.com/assets/976778c7.svg",
-    "srcset": "/assets/4c111b53ecd5@1x.jpg 1.0x,/assets/4c111b53ecd5@1.3x.jpg 1.3x,/assets/4c111b53ecd5@1.4x.jpg 1.4x,/assets/4c111b53ecd5@1.6x.jpg 1.6x,/assets/4c111b53ecd5@2x.jpg 2.0x,/assets/4c111b53ecd5@2.6x.jpg 2.6x,/assets/4c111b53ecd5@3.3x.jpg 3.3x",
+    "srcset": {
+      "1.0x": "/assets/1cab46323bec@1x.jpg",
+      "1.3x": "/assets/1cab46323bec@1.3x.jpg",
+      "1.4x": "/assets/1cab46323bec@1.4x.jpg",
+      "1.6x": "/assets/1cab46323bec@1.6x.jpg",
+      "2.0x": "/assets/1cab46323bec@2x.jpg",
+      "2.6x": "/assets/1cab46323bec@2.6x.jpg",
+      "3.3x": "/assets/1cab46323bec@3.3x.jpg"
+    },
     "alt": "this is the fourth alt"
-  },
-  {
-    "title": "5",
-    "caption": "TARTAR SOURCE",
-    "src": "http://world-if-stage.elasticbeanstalk.com/assets/d81fa2d7.svg",
-    "srcset": "",
-    "alt": ""
-  },
-  {
-    "title": "6",
-    "caption": "GOING IT ALONE...",
-    "src": "/images/Ural_6_v001.png",
-    "srcset": "",
-    "alt": ""
-  },
-  {
-    "title": "7",
-    "caption": "...OR GOING TOGETHER",
-    "src": "/images/Sib_7_v001.png",
-    "srcset": "",
-    "alt": ""
-  },
-  {
-    "title": "8",
-    "caption": "PANDORA'S BOX",
-    "src": "/images/Other_8_v001.png",
-    "srcset": "",
-    "alt": ""
-  },
-  {
-    "title": "9",
-    "caption": "EX UNO, PLURES?",
-    "src": "/images/All_9_v001.svg",
-    "srcset": "",
-    "alt": ""
   }
 ]
