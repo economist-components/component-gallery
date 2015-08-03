@@ -77,70 +77,39 @@
   font-size: 21px;
 }
 
-/*@media screen and (max-width: 500px) {
-  .Gallery--features {
-    height: 105px; 
-  }
-
-  .Gallery--features-content {
-    width: 100%;
-    height: 50px; 
-  }
-
-  .Gallery--features-scenechange {
-    left: 3%;
-    top: 35px;
-    width: 94%;
-    height: 30px; 
-  }
-  .Gallery--features-content-title {
-    font-size: 30px;
-    line-height: 30px;
-    padding-right: 5px;
-    height: 35px;
-  }
-  .Gallery--features-content--caption {
-    height: 55%;
-    font-size: 14px;
-    line-height: 18px;
-  }
-}*/
-
-
-/* OVERWRITE STYLES IN SCENECHANGER */
-.Pager {
+/* OVERWRITE STYLES IN Pager */
+.Gallery .Pager {
   height: 100%;
 }
-.Pager ul {
+.Gallery .Pager ul {
   padding: 0;
   margin: 15px 10px 0 0;
   overflow: hidden;
   float:right;
 }
 
-.Pager li {
+.Gallery .Pager li {
   padding: 0 10px;
   height: 60px;
 }
 /* Arrows */
-.Pager .Pager-previous,
-.Pager .Pager-next {
+.Gallery .Pager .Pager-previous,
+.Gallery .Pager .Pager-next {
   padding: 0;
   width: auto;
 }
-.Pager-previous svg,
-.Pager-next svg {
+.Gallery .Pager-previous svg,
+.Gallery .Pager-next svg {
   width: 60px;
   height: 60px;
   fill: #dadada;
 }
-.Pager-previous:hover svg,
-.Pager-next:hover svg {
+.Gallery .Pager-previous:hover svg,
+.Gallery .Pager-next:hover svg {
   fill: #e3120b;
 }
 
-/* Actual dot */
-.Pager li span {
+.Gallery .Pager li span {
   width: 0;
   height: 0;
   border: solid 6px #dadada;
@@ -151,38 +120,38 @@
   display: block;
   margin-top: 24px;
 }
-.Pager li:hover span {
+.Gallery .Pager li:hover span {
   border-color: #e3120b;
 }
-.Pager li .Pager-index-selected {
+.Gallery .Pager li .Pager-index-selected {
   border-color: #e3120b;
 }
 @media screen and (max-width: 850px) {
-  .Pager li {
+  .Gallery .Pager li {
     padding: 0 7px;
   }
 }
 @media screen and (max-width: 730px) {
-  .Gallery--features-content {
+  .Gallery .Gallery--features-content {
     width: 45%;
   }
-  .Gallery--features-scenechange {
+  .Gallery .Gallery--features-scenechange {
     width: 55%;
   }
 }
 @media screen and (max-width: 670px) {
-  .Gallery--features {
+  .Gallery .Gallery--features {
      height: auto; 
   }
-  .Gallery--features-content,
-  .Gallery--features-scenechange {
+  .Gallery .Gallery--features-content,
+  .Gallery .Gallery--features-scenechange {
     width: 100%;
     float: none;
   }
-  .Gallery--features-content-title {
+  .Gallery .Gallery--features-content-title {
     width: 18%;
   }
-  .Pager ul {
+  .Gallery .Pager ul {
     margin: 0;
     float: none;
     display: -webkit-box;
@@ -193,5 +162,4 @@
     align-items: center;
     justify-content: center;
   }
-
 }
