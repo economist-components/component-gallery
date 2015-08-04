@@ -6,11 +6,9 @@ export default class Gallery extends React.Component {
 
   static get propTypes() {
     return {
-      children: React.PropTypes.node,
       defaultSceneIndex: React.PropTypes.number,
       images: React.PropTypes.array,
       sizeThreshold: React.PropTypes.number,
-      test: React.PropTypes.string,
     };
   }
 
@@ -116,8 +114,7 @@ export default class Gallery extends React.Component {
             <Pager
               sceneTotal={sceneTotal}
               defaultSceneIndex={sceneIndex}
-              onChangeIndex={this.passState.bind(this)}
-              prevNext="arrows"
+              showArrows
               />
           </div>
         </div>
