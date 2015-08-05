@@ -18,15 +18,6 @@
     "title": "2",
     "caption": "THE FIRST TO GO?",
     "src": "http://world-if-stage.elasticbeanstalk.com/assets/3ff076cc.svg",
-    "srcset": {
-      "1.0x": "/assets/1cab46323bec@1x.jpg",
-      "1.3x": "/assets/1cab46323bec@1.3x.jpg",
-      "1.4x": "/assets/1cab46323bec@1.4x.jpg",
-      "1.6x": "/assets/1cab46323bec@1.6x.jpg",
-      "2.0x": "/assets/1cab46323bec@2x.jpg",
-      "2.6x": "/assets/1cab46323bec@2.6x.jpg",
-      "3.3x": "/assets/1cab46323bec@3.3x.jpg"
-    },
     "alt": "this is the second alt"
   },
   {

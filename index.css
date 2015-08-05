@@ -106,7 +106,7 @@
 }
 .Gallery .Pager-previous:hover svg,
 .Gallery .Pager-next:hover svg {
-  fill: #e3120b;
+  fill: #ffffff;
 }
 
 .Gallery .Pager li span {
@@ -120,11 +120,8 @@
   display: block;
   margin-top: 24px;
 }
-.Gallery .Pager li:hover span {
-  border-color: #e3120b;
-}
 .Gallery .Pager li .Pager-index-selected {
-  border-color: #e3120b;
+  border-color: #ffffff;
 }
 @media screen and (max-width: 850px) {
   .Gallery .Pager li {
