@@ -24,6 +24,8 @@
 }
 .Gallery--images img {
   display: block;
+  width: 100%;
+  height: auto;
 }
 /* Hide map */
 .Gallery--images-hidden {
