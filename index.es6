@@ -110,12 +110,11 @@ export default class Gallery extends React.Component {
         </div>
         <div className="Gallery--features">
           {captionDiv}
-          <div className="Gallery--features-scenechange">
+          <div className="Gallery--features-pager">
             <Pager
               sceneTotal={sceneTotal}
               defaultSceneIndex={sceneIndex}
               onChangeIndex={this.passState.bind(this)}
-              showArrows
               />
           </div>
         </div>

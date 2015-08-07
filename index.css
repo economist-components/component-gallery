@@ -43,7 +43,7 @@
   width: 50%; 
 }
 
-.Gallery--features-scenechange {
+.Gallery--features-pager {
   float: left;
   background-color: #393F43;
   width: 50%;
@@ -68,10 +68,8 @@
 .Gallery--features-content--caption {
   float: left;
   width: calc(72% - 11px);
-  
   margin: 0;
   padding: 10px 0 0 10px;
-  
   text-align: left;
   font-family: "Neutra2Display-Medium";
   font-size: 21px;
@@ -83,46 +81,61 @@
 }
 .Gallery .Pager ul {
   padding: 0;
-  margin: 15px 10px 0 0;
+  margin: 15px 20px 0 0;
   overflow: hidden;
   float:right;
 }
-
 .Gallery .Pager li {
   padding: 0 10px;
   height: 60px;
 }
-/* Arrows */
 .Gallery .Pager .Pager-previous,
 .Gallery .Pager .Pager-next {
-  padding: 0;
-  width: auto;
+  padding: 0 7px 0 7px;
+  width: 20px;
 }
-.Gallery .Pager-previous svg,
-.Gallery .Pager-next svg {
-  width: 60px;
-  height: 60px;
-  fill: #dadada;
+.Gallery .Pager .Pager-previous:before,
+.Gallery .Pager .Pager-next:before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  transform: rotate(45deg);
+  margin-right: 15px;
+  margin-top: 20px;
 }
-.Gallery .Pager-previous:hover svg,
-.Gallery .Pager-next:hover svg {
-  fill: #ffffff;
+.Gallery .Pager .Pager-previous:before{
+  border-left: 5px solid #dadada;
+   border-bottom: 5px solid #dadada;
+}
+.Gallery .Pager .Pager-next:before{
+  border-right: 5px solid #dadada;
+  border-top: 5px solid #dadada;
+}
+.Gallery .Pager .Pager-previous span,
+.Gallery .Pager .Pager-next span {
+  display: none;
 }
 
-.Gallery .Pager li span {
+.Gallery .Pager .Pager-index span {
   width: 0;
   height: 0;
   border: solid 6px #dadada;
   border-radius: 6px;
   background-color: #dadada;
+  margin-top: 0;
   text-indent: -20px;
-  overflow: hidden;
   display: block;
+  overflow: hidden;
   margin-top: 24px;
 }
-.Gallery .Pager li .Pager-index-selected {
+
+.Gallery .Pager .Pager-previous:hover:before,
+.Gallery .Pager .Pager-next:hover:before,
+.Gallery .Pager .Pager-index-selected span {
   border-color: #ffffff;
 }
+
 @media screen and (max-width: 850px) {
   .Gallery .Pager li {
     padding: 0 7px;
@@ -132,7 +145,7 @@
   .Gallery .Gallery--features-content {
     width: 45%;
   }
-  .Gallery .Gallery--features-scenechange {
+  .Gallery .Gallery--features-pager {
     width: 55%;
   }
 }
@@ -141,7 +154,7 @@
      height: auto; 
   }
   .Gallery .Gallery--features-content,
-  .Gallery .Gallery--features-scenechange {
+  .Gallery .Gallery--features-pager {
     width: 100%;
     float: none;
   }
