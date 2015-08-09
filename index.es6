@@ -28,12 +28,12 @@ export default class Gallery extends React.Component {
     this.state = {
       sceneIndex: props.defaultSceneIndex,
       hideImage: false,
-      showPager: false,
+      showPager: '',
     };
   }
 
   componentDidMount() {
-    this.setState({ showPager: 'Gallery-loaded' });
+    this.setState({ showPager: ' Gallery-loaded' });
   }
 
   // HANDLE RESIZE ends
@@ -74,8 +74,7 @@ export default class Gallery extends React.Component {
     const alt = this.props.images[sceneIndex].alt;
     const srcset = this.props.images[sceneIndex].srcset || '';
     const caption = this.props.images[sceneIndex].caption;
-    // loaded class for scenechanger display
-    const galleryOuterClass = 'Gallery ' + this.state.showPager;
+    const galleryOuterClass = 'Gallery' + this.state.showPager;
 
     // Image class-name: hidden or not
     let galleryImagesState = 'Gallery--images-shown';
