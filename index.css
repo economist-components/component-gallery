@@ -1,10 +1,9 @@
-@import '@economist/component-scenechanger';
+@import '@economist/component-pager';
 @import '@economist/component-font-neutra2';
 
 .Gallery {
   width: 100%;
   max-width: 1190px;
-  min-width: 300px;
   margin-bottom: 20px;
 }
 
@@ -18,7 +17,6 @@
   transition: opacity .5s linear;
 }
 
-/* OVERWRITE IMG TAG IN COMPONENT-IMAGECAPTION */
 .Gallery--images figure {
   margin: 0;
 }
@@ -32,9 +30,7 @@
   opacity: 0;
 }
 
-/* Wrapper for all 'nav' elements: title, caption and scenechanger*/
 .Gallery--features {
-  position: relative;
   height: 90px;
   width: 100%;
   background-color: #393F43;
@@ -42,107 +38,140 @@
 }
 
 .Gallery--features-content {
-  top: 0;
-  left: 0;
-  position: absolute;
+  float: left;
   background-color: #393F43;
   color: white;
-  height: 80px;
+  height: 100%;
   width: 50%; 
 }
 
-.Gallery--features-scenechange {
-  position: absolute;
+.Gallery--features-pager {
+  float: left;
   background-color: #393F43;
-  top: 0;
-  left: 50%;
-  width: 48%;
-  height: 30px;
-  margin-top: 23px;
+  width: 50%;
+  height: 100%;
 }
 
 .Gallery--features-content-title {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 28%;
-  padding-top: 10px;
-  height: 90%;
-  padding-right: 2%;
+  width: calc(28% - 10px);
   text-align: right;
   font-family: "Neutra2Display-Titling";
-   font-size: 48px;
-  line-height: 48px;
+  font-size: 48px;
+  float: left;
+  margin: 0;
+  padding: 0;
+  padding: 10px 10px 0 0;
+  line-height: 0;
+  line-height: 40px;
+  height: calc(100% - 10px);
+  border-right: 1px solid #dadada;
 }
 
 .Gallery--features-content--caption {
-  position: absolute;
-  left: 30%;
-  top: 0;
-  width: 67%;
-  height: 100%;
-  padding-top: 10px;
-  padding-left: 2%;
-  border-left: 1px solid #dadada;
+  float: left;
+  width: calc(72% - 11px);
+  margin: 0;
+  padding: 10px 0 0 10px;
   text-align: left;
   font-family: "Neutra2Display-Medium";
-  line-height: 27px
+  font-size: 21px;
 }
 
-@media screen and (max-width: 500px) {
-  .Gallery--features {
-    height: 105px; 
-  }
-
-  .Gallery--features-content {
-    width: 100%;
-    height: 50px; 
-  }
-
-  .Gallery--features-scenechange {
-    left: 3%;
-    top: 35px;
-    width: 94%;
-    height: 30px; 
-  }
-  .Gallery--features-content-title {
-    font-size: 30px;
-    line-height: 30px;
-    padding-right: 5px;
-    height: 35px;
-  }
-  .Gallery--features-content--caption {
-    height: 55%;
-    font-size: 14px;
-    line-height: 18px;
-  }
+/* OVERWRITE STYLES IN Pager */
+.Gallery .Pager {
+  height: 100%;
 }
-
-
-/* OVERWRITE STYLES IN SCENECHANGER */
-.SceneChanger-arrow-left {
-  margin-right: 20px;
+.Gallery .Pager ul {
+  padding: 0;
+  margin: 15px 20px 0 0;
+  overflow: hidden;
+  float:right;
 }
-.SceneChanger-arrow-right {
-  margin-left: 20px;
+.Gallery .Pager li {
+  padding: 0 10px;
+  height: 60px;
 }
-.SceneChanger-arrow-left:hover,
-.SceneChanger-arrow-left:hover {
-  background: #E3120B;
+.Gallery .Pager .Pager-previous,
+.Gallery .Pager .Pager-next {
+  padding: 0 7px 0 7px;
+  width: 20px;
 }
-.SceneChanger-onedot-wrapper:hover {
-  background-color: #E3120B;
+.Gallery .Pager .Pager-previous:before,
+.Gallery .Pager .Pager-next:before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  transform: rotate(45deg);
+  margin-right: 15px;
+  margin-top: 20px;
 }
-.SceneChanger-dot {
-  border-width: 6px;
-  margin: -6.05px 0 0 -6.05px;
+.Gallery .Pager .Pager-previous:before{
+  border-left: 5px solid #dadada;
+   border-bottom: 5px solid #dadada;
 }
-.SceneChanger-dot-highlight {
-  border-color: #E3120B;
+.Gallery .Pager .Pager-next:before{
+  border-right: 5px solid #dadada;
+  border-top: 5px solid #dadada;
 }
-.SceneChanger {
+.Gallery .Pager .Pager-previous span,
+.Gallery .Pager .Pager-next span {
   display: none;
 }
-.Gallery-loaded .SceneChanger {
+
+.Gallery .Pager .Pager-index span {
+  width: 0;
+  height: 0;
+  border: solid 6px #dadada;
+  border-radius: 6px;
+  background-color: #dadada;
+  margin-top: 0;
+  text-indent: -20px;
   display: block;
+  overflow: hidden;
+  margin-top: 24px;
+}
+
+.Gallery .Pager .Pager-previous:hover:before,
+.Gallery .Pager .Pager-next:hover:before,
+.Gallery .Pager .Pager-index-selected span {
+  border-color: #ffffff;
+}
+
+@media screen and (max-width: 850px) {
+  .Gallery .Pager li {
+    padding: 0 7px;
+  }
+}
+@media screen and (max-width: 730px) {
+  .Gallery .Gallery--features-content {
+    width: 45%;
+  }
+  .Gallery .Gallery--features-pager {
+    width: 55%;
+  }
+}
+@media screen and (max-width: 670px) {
+  .Gallery .Gallery--features {
+     height: auto; 
+  }
+  .Gallery .Gallery--features-content,
+  .Gallery .Gallery--features-pager {
+    width: 100%;
+    float: none;
+  }
+  .Gallery .Gallery--features-content-title {
+    width: 18%;
+  }
+  .Gallery .Pager ul {
+    margin: 0;
+    float: none;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

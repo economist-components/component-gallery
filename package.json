@@ -23,7 +23,7 @@
       "/index.css"
     ],
     "js": [
-      "/node_modules/react/react.js?browserify&expose=react",
+      "/node_modules/react/addons.js?browserify&expose=react",
       {
         "contents": "window.React = require('react');"
       },
@@ -65,7 +65,7 @@
     "build": "npm-assets ."
   },
   "dependencies": {
-    "@economist/component-scenechanger": "^2.0.0",
+    "@economist/component-pager": "^1.1.0",
     "@economist/component-imagecaption": "^1.1.1",
     "@economist/component-font-neutra2": "^1.0.4",
     "react": "^0.13.3"

@@ -1,16 +1,14 @@
 import React from 'react';
-import SceneChanger from '@economist/component-scenechanger';
+import Pager from '@economist/component-pager';
 import ImageCaption from '@economist/component-imagecaption';
 
 export default class Gallery extends React.Component {
 
   static get propTypes() {
     return {
-      children: React.PropTypes.node,
       defaultSceneIndex: React.PropTypes.number,
       images: React.PropTypes.array,
       sizeThreshold: React.PropTypes.number,
-      test: React.PropTypes.string,
     };
   }
 
@@ -30,12 +28,12 @@ export default class Gallery extends React.Component {
     this.state = {
       sceneIndex: props.defaultSceneIndex,
       hideImage: false,
-      showPager: false,
+      showPager: '',
     };
   }
 
   componentDidMount() {
-    this.setState({ showPager: 'Gallery-loaded' });
+    this.setState({ showPager: ' Gallery-loaded' });
   }
 
   // HANDLE RESIZE ends
@@ -63,6 +61,10 @@ export default class Gallery extends React.Component {
     }, 550);
   }
 
+  getSrcSet(image) {
+    return Object.keys(image).map((key) => `${image[key]} ${key}`).join(',');
+  }
+
   // RENDER
   render() {
     const sceneTotal = this.props.images.length;
@@ -70,21 +72,21 @@ export default class Gallery extends React.Component {
     const image = this.props.images[sceneIndex].src;
     const title = this.props.images[sceneIndex].title;
     const alt = this.props.images[sceneIndex].alt;
-    const srcset = this.props.images[sceneIndex].srcset;
+    const srcset = this.props.images[sceneIndex].srcset || '';
     const caption = this.props.images[sceneIndex].caption;
-    // loaded class for scenechanger display
-    const galleryOuterClass = 'Gallery ' + this.state.showPager;
+    const galleryOuterClass = 'Gallery' + this.state.showPager;
 
     // Image class-name: hidden or not
     let galleryImagesState = 'Gallery--images-shown';
     if (this.state.hideImage) {
       galleryImagesState += ' Gallery--images-hidden';
     }
+
     // Image JSX
     const galleryImages = (
       <div className = "Gallery--images">
         <div className = {galleryImagesState}>
-          <ImageCaption caption="" src={image} alt={alt} srcset={srcset} />
+          <ImageCaption caption="" src={image} alt={alt} srcset={this.getSrcSet(srcset)} />
         </div>
       </div>
     );
@@ -107,11 +109,12 @@ export default class Gallery extends React.Component {
         </div>
         <div className="Gallery--features">
           {captionDiv}
-          <div className="Gallery--features-scenechange">
-            <SceneChanger
+          <div className="Gallery--features-pager">
+            <Pager
               sceneTotal={sceneTotal}
               defaultSceneIndex={sceneIndex}
-              onChangeIndex={this.passState.bind(this)}/>
+              onChangeIndex={this.passState.bind(this)}
+              />
           </div>
         </div>
       </div>
