@@ -19,12 +19,9 @@ export default class Gallery extends React.Component {
 
   renderGalleryImage(image, alt, index) {
     const { activeSlide } = this.state;
-    let klass = 'gallery__slide gallery__slide--hidden';
-    if (activeSlide === index) {
-      klass = 'gallery__slide gallery__slide--visible';
-    }
+    const modifier = (activeSlide === index) ? 'gallery__slide--visible' : 'gallery__slide--hidden';
     return (
-      <div className={klass} key={index}>
+      <div className={`gallery__slide ${ modifier }`} key={index}>
         <ImageCaption
           className="gallery__image"
           sources={image}
