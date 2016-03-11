@@ -59,7 +59,7 @@
   height: 90%;
   padding-top: 10px;
   padding-right: 2%;
-  font-family: 'Neutra2Display-Titling';
+  font-family: Neutra2Display-Titling;
   font-size: 48px;
   line-height: 48px;
   text-align: right;
@@ -73,36 +73,15 @@
   height: 100%;
   padding-top: 10px;
   padding-left: 2%;
-  font-family: 'Neutra2Display-Medium';
+  font-family: Neutra2Display-Medium;
   line-height: 27px;
   text-align: left;
   border-left: 1px solid #dadada;
 }
 
-.SceneChanger-arrow-left {
-  margin-right: 20px;
-}
-
-.SceneChanger-arrow-right {
-  margin-left: 20px;
-}
-
-.SceneChanger-arrow-left:hover,
-.SceneChanger-arrow-left:hover {
-  background: #e3120b;
-}
-
-.SceneChanger-onedot-wrapper:hover {
-  background-color: #e3120b;
-}
-
-.SceneChanger-dot {
-  border-width: 6px;
+.scene-changer__dot::after {
   margin: -6.05px 0 0 -6.05px;
-}
-
-.SceneChanger-dot-highlight {
-  border-color: #e3120b;
+  border-width: 6px;
 }
 
 @media screen and (max-width: 500px) {
