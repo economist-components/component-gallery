@@ -10,6 +10,6 @@ describe('Gallery', () => {
   });
 
   it('renders a React element', () => {
-    React.isValidElement(<Gallery/>).should.equal(true);
+    React.isValidElement(<Gallery />).should.equal(true);
   });
 });

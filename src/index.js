@@ -1,6 +1,6 @@
-import ImageCaption from '@economist/component-imagecaption';
 import React from 'react';
 import SceneChanger from '@economist/component-scenechanger';
+import Slides from './slides';
 
 export default class Gallery extends React.Component {
   constructor(props) {
@@ -12,23 +12,9 @@ export default class Gallery extends React.Component {
   }
 
   handleSlideChange(...args) {
-    const first = 0;
-    const index = args[first];
+    const firstIndex = 0;
+    const index = args[firstIndex];
     this.setState({ activeSlide: index });
-  }
-
-  renderGalleryImage(image, alt, index) {
-    const { activeSlide } = this.state;
-    const modifier = (activeSlide === index) ? 'gallery__slide--visible' : 'gallery__slide--hidden';
-    return (
-      <div className={`gallery__slide ${ modifier }`} key={index}>
-        <ImageCaption
-          className="gallery__image"
-          sources={image}
-          alt={alt}
-        />
-      </div>
-    );
   }
 
   render() {
@@ -36,9 +22,7 @@ export default class Gallery extends React.Component {
     const { activeSlide } = this.state;
     const sceneTotal = images.length;
     const title = images[activeSlide].title;
-    const alt = images[activeSlide].alt;
     const caption = images[activeSlide].caption;
-    const galleryImages = images.map((image, index) => (this.renderGalleryImage(image.sources, alt, index)));
     let titleDiv = null;
     if (title) {
       titleDiv = (
@@ -70,22 +54,20 @@ export default class Gallery extends React.Component {
     }
 
     const galleryFeatures = (
-      <div className="gallery__features">
-        <div className="gallery__features-content">
-          {titleDiv}
-          {captionDiv}
-        </div>
-        <div className="gallery__features-navigation">
-          {NavigationElement}
-        </div>
+      <div className="gallery__features-content">
+        {titleDiv}
+        {captionDiv}
       </div>
     );
     return (
       <div className="gallery">
-        <div className="gallery__slides">
-          {galleryImages}
+        <Slides images={images} activeSlide={activeSlide} />
+        <div className="gallery__features">
+          {galleryFeatures}
+          <div className="gallery__features-navigation">
+            {NavigationElement}
+          </div>
         </div>
-        {galleryFeatures}
       </div>
     );
   }
@@ -99,7 +81,21 @@ Gallery.defaultProps = {
 if (process.env.NODE_ENV !== 'production') {
   Gallery.propTypes = {
     defaultSceneIndex: React.PropTypes.number,
-    images: React.PropTypes.arrayOf(React.PropTypes.object),
+    images: React.PropTypes.arrayOf(
+      React.PropTypes.shape({
+        title: React.PropTypes.string,
+        caption: React.PropTypes.string,
+        sources: React.PropTypes.arrayOf(
+          React.PropTypes.shape({
+            url: React.PropTypes.string,
+            width: React.PropTypes.number,
+            height: React.PropTypes.number,
+            dppx: React.PropTypes.number,
+          })
+        ),
+        alt: React.PropTypes.string,
+      })
+    ),
     navigation: React.PropTypes.node,
   };
 }
