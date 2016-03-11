@@ -1,0 +1,186 @@
+
+@import '@economist/component-picture';.scene-changer {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: inherit;
+}.scene-changer__arrow {
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  background: transparent;
+  border: 0 none;
+  -webkit-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+}.scene-changer__arrow .Icon {
+  width: 30px;
+  height: 30px;
+}.scene-changer__arrow:hover {
+  background: #e3120b;
+}.scene-changer__arrow--left {
+  float: left;
+  margin: 0 20px 0 0;
+}.scene-changer__arrow--right {
+  float: right;
+  margin: 0 0 0 20px;
+}.scene-changer__arrow--active {
+  opacity: 1;
+}.scene-changer__arrow--inactive {
+  opacity: 0;
+}.scene-changer__dots {
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}.scene-changer__dot {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  background: transparent;
+  border: 0 none;
+}.scene-changer__dot:hover {
+  background-color: #e3120b;
+}.scene-changer__dot::after {
+  content: '.';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.1px;
+  height: 0.1px;
+  margin: -10.05px 0 0 -10.05px;
+  background-color: #dadada;
+  border: solid 10px #dadada;
+  border-radius: 10px;
+}.scene-changer__dot--active::after {
+  border-color: #e3120b;
+}.scene-changer__dot--active:hover::after {
+  border-color: #dadada;
+}@font-face {
+  font-family: "Neutra2Display";
+  font-weight: bold;
+  src: url('/assets/neutraface2display-bold.otf');
+}@font-face {
+  font-family: "Neutra2Display";
+  font-weight: normal;
+  src: url('/assets/Neutraface2Display-bold.otf');
+}@font-face {
+  font-family: "Neutra2Display-Medium";
+  font-weight: normal;
+  src: url('/assets/neutraface2display-medium.otf')
+}@font-face {
+  font-family: 'Neutra2Display-Titling';
+  font-weight: normal;
+  src: url('/assets/neutraface2display-titling.otf')
+}.gallery {
+  width: 100%;
+  margin-bottom: 20px;
+}.gallery__slide--hidden {
+  opacity: 0;
+  height: 0;
+}.gallery__slide--visible {
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: opacity 0.5s linear;
+  transition: opacity 0.5s linear;
+}.gallery__image {
+  margin: 0;
+}.gallery__features {
+  position: relative;
+  width: 100%;
+  height: 90px;
+  background-color: #393f43;
+  border-bottom: 10px solid #e3120b;
+}.gallery__features-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 80px;
+  color: #fff;
+  background-color: #393f43;
+}.gallery__features-navigation {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 48%;
+  height: 30px;
+  margin-top: 23px;
+  background-color: #393f43;
+}.gallery__features-content-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 28%;
+  height: 90%;
+  padding-top: 10px;
+  padding-right: 2%;
+  font-family: Neutra2Display-Titling;
+  font-size: 48px;
+  line-height: 48px;
+  text-align: right;
+}.gallery__features-content--caption {
+  position: absolute;
+  top: 0;
+  left: 30%;
+  width: 67%;
+  height: 100%;
+  padding-top: 10px;
+  padding-left: 2%;
+  font-family: Neutra2Display-Medium;
+  line-height: 27px;
+  text-align: left;
+  border-left: 1px solid #dadada;
+}.scene-changer__dot::after {
+  margin: -6.05px 0 0 -6.05px;
+  border-width: 6px;
+}@media screen and (max-width: 500px) {
+  .gallery__features {
+    height: 105px;
+  }
+  .gallery__features-content {
+    width: 100%;
+    height: 50px;
+  }
+  .gallery__features-navigation {
+    top: 35px;
+    left: 3%;
+    width: 94%;
+    height: 30px;
+  }
+  .gallery__features-content-title {
+    height: 35px;
+    padding-right: 5px;
+    font-size: 30px;
+    line-height: 30px;
+  }
+  .gallery__features-content--caption {
+    height: 55%;
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
