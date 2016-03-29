@@ -267,16 +267,17 @@ module.exports = exports['default'];
 }).call(this,require('_process'))
 },{"@economist/component-picture":6,"_process":102,"react":"react"}],4:[function(require,module,exports){
 (function (global){
-/* eslint-disable */
+/* global window */
 'use strict';
 
 exports.__esModule = true;
 exports.addElementResizeListener = addElementResizeListener;
 exports.removeElementResizeListener = removeElementResizeListener;
-var globalObject = typeof window !== 'undefined' ? window : global;
-/* eslint-enable */
-var requestFrame = globalObject.requestAnimationFrame || function (callback) {
-  return setTimeout(callback, 1000 / 60);
+var globalObject = typeof window === 'undefined' ? global : window;
+var setTimeoutTimeout = 20;
+var debounceTimeout = 100;
+var requestFrame = globalObject.requestAnimationFrame || function (finishRequestFrame) {
+  return setTimeout(finishRequestFrame, setTimeoutTimeout);
 };
 var cancelFrame = globalObject.cancelAnimationFrame || function (timeoutId) {
   return clearTimeout(timeoutId);
@@ -341,7 +342,7 @@ function windowHasResized() {
 
       if (_ret === 'break') break;
     }
-  }, 100);
+  }, debounceTimeout);
 }
 
 function addWindowResizeListener() {
@@ -349,49 +350,52 @@ function addWindowResizeListener() {
   globalObject.addEventListener('resize', windowHasResized);
 }
 
-function addElementResizeListener(element, callback) {
+function addElementResizeListener(element, handleResize) {
   if (!element || element instanceof globalObject.HTMLElement === false) {
     throw new Error('element must be HTMLElement, given ' + element);
   }
-  if (typeof callback !== 'function') {
-    throw new Error('callback must be function, given ' + callback);
+  if (typeof handleResize !== 'function') {
+    throw new Error('callback must be function, given ' + handleResize);
   }
-  var elementReference = elementsWithResizeListeners.find(function (item) {
-    return item.element === element;
+  var elementReference = elementsWithResizeListeners.find(function (currentItem) {
+    return currentItem.element === element;
   });
   if (!elementReference) {
     elementReference = { element: element, listeners: [], frame: null, oldWidth: null, oldHeight: null };
     elementsWithResizeListeners.push(elementReference);
   }
-  if (elementReference.listeners.indexOf(callback) !== -1) {
+  var notFound = -1;
+  if (elementReference.listeners.indexOf(handleResize) !== notFound) {
     return false;
   }
-  elementReference.listeners.push(callback);
+  elementReference.listeners.push(handleResize);
   addWindowResizeListener();
   return true;
 }
 
-function removeElementResizeListener(element, callback) {
-  var elementReference = elementsWithResizeListeners.find(function (item) {
-    return item.element === element;
+function removeElementResizeListener(element, handleResize) {
+  var elementReference = elementsWithResizeListeners.find(function (currentItem) {
+    return currentItem.element === element;
   });
   if (!elementReference) {
     return false;
   }
-  var listenerIndex = elementReference.listeners.indexOf(callback);
-  if (listenerIndex === -1) {
+  var notFound = -1;
+  var listenerIndex = elementReference.listeners.indexOf(handleResize);
+  if (listenerIndex === notFound) {
     return false;
   }
-  elementReference.listeners = elementReference.listeners.filter(function (item) {
-    return item !== callback;
+  elementReference.listeners = elementReference.listeners.filter(function (currentItem) {
+    return currentItem !== handleResize;
   });
   if (elementReference.listeners.length === 0) {
-    elementsWithResizeListeners = elementsWithResizeListeners.filter(function (item) {
-      return item !== elementReference;
+    elementsWithResizeListeners = elementsWithResizeListeners.filter(function (currentItem) {
+      return currentItem !== elementReference;
     });
   }
   return true;
 }
+
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],5:[function(require,module,exports){
 /* global window */
@@ -402,12 +406,13 @@ exports.getDppx = getDppx;
 exports.getClosestDppx = getClosestDppx;
 
 function getDppx(global) {
-  var globalObject = global || (typeof window !== 'undefined' ? window : {});
+  var globalObject = global || (typeof window === 'undefined' ? {} : window);
   var dppxInDpi = 96;
   if ('devicePixelRatio' in globalObject) {
     return Number(globalObject.devicePixelRatio);
   } else if ('screen' in globalObject && 'deviceXDPI' in globalObject.screen) {
-    return Math.round(Math.sqrt(globalObject.screen.deviceXDPI * globalObject.screen.deviceYDPI) / dppxInDpi * 100) / 100;
+    var divisor = 100;
+    return Math.round(Math.sqrt(globalObject.screen.deviceXDPI * globalObject.screen.deviceYDPI) / dppxInDpi * divisor) / divisor;
   }
   return 1;
 }
@@ -420,6 +425,7 @@ function getClosestDppx(dppxRatios) {
     return Math.abs(currentDppx - dppx) < Math.abs(previousDppx - dppx) ? currentDppx : previousDppx;
   }, -Infinity);
 }
+
 },{}],6:[function(require,module,exports){
 (function (process){
 'use strict';
@@ -427,6 +433,8 @@ function getClosestDppx(dppxRatios) {
 exports.__esModule = true;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+exports.getSmallPortraitSource = getSmallPortraitSource;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -436,56 +444,75 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var _elementResizeListener = require('./element-resize-listener');
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-/* eslint-disable id-match */
-
 var _reactDom = require('react-dom');
-
-/* eslint-enable id-match */
 
 var _getDppx = require('./get-dppx');
 
-var _elementResizeListener = require('./element-resize-listener');
+function getSmallPortraitSource(sources, dppx) {
+  return sources.reduce(function (previousSource, currentSource) {
+    if (currentSource.dppx !== dppx) {
+      return previousSource;
+    }
+    var portraitImageRatioCutoff = 2;
+    var isLessWide = currentSource.width < previousSource.width;
+    var currentImageRatio = Math.abs(currentSource.width / currentSource.height);
+    var isPortrait = currentImageRatio < portraitImageRatioCutoff;
+    return isLessWide && isPortrait ? currentSource : previousSource;
+  });
+}
 
 var Picture = (function (_React$Component) {
   _inherits(Picture, _React$Component);
 
-  function Picture(_ref) {
-    var sources = _ref.sources;
-
+  function Picture(props) {
     _classCallCheck(this, Picture);
 
-    _React$Component.apply(this, arguments);
-    this.defaultProps = {
-      alt: '',
-      sources: []
-    };
+    for (var _len = arguments.length, rest = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      rest[_key - 1] = arguments[_key];
+    }
+
+    _React$Component.call.apply(_React$Component, [this, props].concat(rest));
     this.changeImageByWidth = this.changeImageByWidth.bind(this);
-    var dppx = _getDppx.getClosestDppx(sources);
-    var smallPortraitSource = sources.reduce(function (previousSource, currentSource) {
-      if (currentSource.dppx !== dppx) {
-        return previousSource;
+    var sources = props.sources;
+
+    var isSvgSource = false;
+    sources.forEach(function (source) {
+      if (source.mime && source.mime === 'image/svg+xml') {
+        isSvgSource = true;
+        sources[0] = source;
+        return;
       }
-      var portraitImageRatioCutoff = 2;
-      var isLessWide = currentSource.width < previousSource.width;
-      var currentImageRatio = Math.abs(currentSource.width / currentSource.height);
-      var isPortrait = currentImageRatio < portraitImageRatioCutoff;
-      return isLessWide && isPortrait ? currentSource : previousSource;
-    }, sources[0] || {});
-    this.state = _extends({}, smallPortraitSource);
+    });
+    var smallPortraitSource = {};
+    if (isSvgSource === false) {
+      var dppx = _getDppx.getClosestDppx(sources);
+      smallPortraitSource = getSmallPortraitSource(sources, dppx);
+    } else {
+      smallPortraitSource = sources[0];
+    }
+    this.state = _extends({}, smallPortraitSource, {
+      isSvgSource: isSvgSource
+    });
   }
 
   Picture.prototype.componentDidMount = function componentDidMount() {
-    var element = _reactDom.findDOMNode(this);
-    _elementResizeListener.addElementResizeListener(element, this.changeImageByWidth);
-    this.changeImageByWidth(element.offsetWidth, element.offsetHeight);
+    if (this.state.isSvgSource === false) {
+      var element = _reactDom.findDOMNode(this);
+      _elementResizeListener.addElementResizeListener(element, this.changeImageByWidth);
+      this.changeImageByWidth(element.offsetWidth, element.offsetHeight);
+    }
   };
 
   Picture.prototype.componentWillUnmount = function componentWillUnmount() {
-    _elementResizeListener.removeElementResizeListener(_reactDom.findDOMNode(this), this.changeImageByWidth);
+    if (this.state.isSvgSource === false) {
+      _elementResizeListener.removeElementResizeListener(_reactDom.findDOMNode(this), this.changeImageByWidth);
+    }
   };
 
   Picture.prototype.changeImageByWidth = function changeImageByWidth(width, height) {
@@ -508,24 +535,32 @@ var Picture = (function (_React$Component) {
   };
 
   Picture.prototype.render = function render() {
-    var _ref2 = this.state || {};
+    var _ref = this.state || {};
 
-    var url = _ref2.url;
+    var url = _ref.url;
+    var isSvgSource = _ref.isSvgSource;
+
+    /* eslint-disable no-use-before-define */
+    // rule disabled due to following issues:
+    // https://github.com/eslint/eslint/issues/5135
+    // https://github.com/babel/babel-eslint/issues/276
     var _props = this.props;
-    var sources = _props.sources;
     var className = _props.className;
     var alt = _props.alt;
 
-    var remainingProps = _objectWithoutProperties(_props, ['sources', 'className', 'alt']);
+    var remainingProps = _objectWithoutProperties(_props, ['className', 'alt']);
 
-    var imageProps = { alt: alt, src: url };
-    var wrapperProps = _extends({}, remainingProps, {
-      className: ['picture'].concat(className).join(' ').trim()
-    });
+    /* eslint-enable no-use-before-define */
+    var pictureElement = null;
+    if (isSvgSource) {
+      pictureElement = _react2['default'].createElement('object', { type: 'image/svg+xml', data: url, className: 'picture__object' });
+    } else {
+      pictureElement = _react2['default'].createElement('img', { alt: alt, src: url, className: 'picture__image' });
+    }
     return _react2['default'].createElement(
       'div',
-      wrapperProps,
-      _react2['default'].createElement('img', imageProps)
+      _extends({}, remainingProps, { className: ['picture'].concat(className).join(' ').trim() }),
+      pictureElement
     );
   };
 
@@ -534,19 +569,25 @@ var Picture = (function (_React$Component) {
 
 exports['default'] = Picture;
 
+Picture.defaultProps = {
+  alt: '',
+  sources: []
+};
+
 if (process.env.NODE_ENV !== 'production') {
   Picture.propTypes = {
-    className: _react2['default'].PropTypes.string,
+    className: _react2['default'].PropTypes.oneOfType([_react2['default'].PropTypes.string, _react2['default'].PropTypes.array]),
     alt: _react2['default'].PropTypes.string.isRequired,
     sources: _react2['default'].PropTypes.arrayOf(_react2['default'].PropTypes.shape({
       url: _react2['default'].PropTypes.string.isRequired,
       width: _react2['default'].PropTypes.number.isRequired,
       height: _react2['default'].PropTypes.number.isRequired,
-      dppx: _react2['default'].PropTypes.number.isRequired
+      dppx: _react2['default'].PropTypes.number.isRequired,
+      mime: _react2['default'].PropTypes.string
     })).isRequired
   };
 }
-module.exports = exports['default'];
+
 }).call(this,require('_process'))
 },{"./element-resize-listener":4,"./get-dppx":5,"_process":102,"react":"react","react-dom":"react-dom"}],7:[function(require,module,exports){
 (function (process){
@@ -2349,17 +2390,12 @@ Buffer.compare = function compare (a, b) {
   var x = a.length
   var y = b.length
 
-  var i = 0
-  var len = Math.min(x, y)
-  while (i < len) {
-    if (a[i] !== b[i]) break
-
-    ++i
-  }
-
-  if (i !== len) {
-    x = a[i]
-    y = b[i]
+  for (var i = 0, len = Math.min(x, y); i < len; ++i) {
+    if (a[i] !== b[i]) {
+      x = a[i]
+      y = b[i]
+      break
+    }
   }
 
   if (x < y) return -1
@@ -2520,7 +2556,6 @@ Buffer.prototype.inspect = function inspect () {
 
 Buffer.prototype.compare = function compare (b) {
   if (!Buffer.isBuffer(b)) throw new TypeError('Argument must be a Buffer')
-  if (this === b) return 0
   return Buffer.compare(this, b)
 }
 
@@ -3537,17 +3572,12 @@ var revLookup = []
 var Arr = typeof Uint8Array !== 'undefined' ? Uint8Array : Array
 
 function init () {
-  var i
   var code = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
-  var len = code.length
-
-  for (i = 0; i < len; i++) {
+  for (var i = 0, len = code.length; i < len; ++i) {
     lookup[i] = code[i]
-  }
-
-  for (i = 0; i < len; ++i) {
     revLookup[code.charCodeAt(i)] = i
   }
+
   revLookup['-'.charCodeAt(0)] = 62
   revLookup['_'.charCodeAt(0)] = 63
 }
@@ -3579,8 +3609,8 @@ function toByteArray (b64) {
 
   for (i = 0, j = 0; i < l; i += 4, j += 3) {
     tmp = (revLookup[b64.charCodeAt(i)] << 18) | (revLookup[b64.charCodeAt(i + 1)] << 12) | (revLookup[b64.charCodeAt(i + 2)] << 6) | revLookup[b64.charCodeAt(i + 3)]
-    arr[L++] = (tmp & 0xFF0000) >> 16
-    arr[L++] = (tmp & 0xFF00) >> 8
+    arr[L++] = (tmp >> 16) & 0xFF
+    arr[L++] = (tmp >> 8) & 0xFF
     arr[L++] = tmp & 0xFF
   }
 
@@ -19871,6 +19901,10 @@ var ReactEmptyComponentInjection = {
   }
 };
 
+function registerNullComponentID() {
+  ReactEmptyComponentRegistry.registerNullComponentID(this._rootNodeID);
+}
+
 var ReactEmptyComponent = function (instantiate) {
   this._currentElement = null;
   this._rootNodeID = null;
@@ -19879,7 +19913,7 @@ var ReactEmptyComponent = function (instantiate) {
 assign(ReactEmptyComponent.prototype, {
   construct: function (element) {},
   mountComponent: function (rootID, transaction, context) {
-    ReactEmptyComponentRegistry.registerNullComponentID(rootID);
+    transaction.getReactMountReady().enqueue(registerNullComponentID, this);
     this._rootNodeID = rootID;
     return ReactReconciler.mountComponent(this._renderedComponent, rootID, transaction, context);
   },
@@ -25401,7 +25435,7 @@ module.exports = ReactUpdates;
 
 'use strict';
 
-module.exports = '0.14.7';
+module.exports = '0.14.8';
 },{}],236:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
