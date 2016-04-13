@@ -1109,7 +1109,7 @@ module.exports = function(IS_INCLUDES){
       if(value != value)return true;
     // Array#toIndex ignores holes, Array#includes - not
     } else for(;length > index; index++)if(IS_INCLUDES || index in O){
-      if(O[index] === el)return IS_INCLUDES || index;
+      if(O[index] === el)return IS_INCLUDES || index || 0;
     } return !IS_INCLUDES && -1;
   };
 };
@@ -1120,7 +1120,7 @@ module.exports = function(it){
   return toString.call(it).slice(8, -1);
 };
 },{}],37:[function(require,module,exports){
-var core = module.exports = {version: '2.2.1'};
+var core = module.exports = {version: '2.2.2'};
 if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 },{}],38:[function(require,module,exports){
 // optional / simple context binding
