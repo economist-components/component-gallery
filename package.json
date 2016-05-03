@@ -118,7 +118,7 @@
     "@economist/component-font-neutra2": "^1.0.4",
     "@economist/component-imagecaption": "^2.0.0",
     "@economist/component-scenechanger": "^3.0.0",
-    "react": "^0.14.8"
+    "react": "^15.0.2"
   },
   "devDependencies": {
     "@economist/doc-pack": "^1.0.6",
