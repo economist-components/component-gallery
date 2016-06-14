@@ -35,7 +35,7 @@ export default class Gallery extends React.Component {
     let captionDiv = null;
     if (caption) {
       captionDiv = (
-        <div className="gallery__features-content--caption">
+        <div className="gallery__features-content-caption">
           {caption}
         </div>
       );
