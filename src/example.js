@@ -1,5 +1,6 @@
-import Gallery from './';
+import 'babel-polyfill';
 import React from 'react';
+import Gallery from './';
 
 const images = [
   {
@@ -7,7 +8,7 @@ const images = [
     caption: 'ONE RUSSIAN',
     sources: [
       {
-        url: 'http://world-if-stage.elasticbeanstalk.com/assets/3ff076cc.svg',
+        url: 'http://placekitten.com/2000/1136',
         width: 2000,
         height: 1136,
         dppx: 1,
@@ -20,15 +21,13 @@ const images = [
     caption: 'THE FIRST TO GO?',
     sources: [
       {
-        url: `http://cms-worldin.economist.com/sites/default/files/styles/1190x560l/
-public/Asia-Japan%27s-unfinished-business-3570x1680.jpg?itok=SZqlubHA`,
+        url: 'http://placekitten.com/1190/560',
         width: 1190,
         height: 560,
         dppx: 1,
       },
       {
-        url: `http://cms-worldin.economist.com/sites/default/files/styles/480x390p/
-public/Asia-Japan%27s-unfinished-business-1440x1170.jpg?itok=kKQzSkC8`,
+        url: 'http://placekitten.com/480/390',
         width: 480,
         height: 390,
         dppx: 1,
@@ -41,15 +40,13 @@ public/Asia-Japan%27s-unfinished-business-1440x1170.jpg?itok=kKQzSkC8`,
     caption: 'CRACKS IN THE CAUCASUS',
     sources: [
       {
-        url: `http://cms-worldin.economist.com/sites/default/files/styles/1190x560l/
-public/S%26T-The-year-of-the-organoid-3570x1680.jpg?itok=6YlYw_iQ`,
+        url: 'http://placekitten.com/1190/560',
         width: 1190,
         height: 560,
         dppx: 1,
       },
       {
-        url: `http://cms-worldin.economist.com/sites/default/files/styles/480x390p/
-public/S%26T-The-year-of-the-organoid-1440x1170.jpg?itok=vAGOd1cS`,
+        url: 'http://placekitten.com/480/390',
         width: 480,
         height: 390,
         dppx: 1,
@@ -62,15 +59,13 @@ public/S%26T-The-year-of-the-organoid-1440x1170.jpg?itok=vAGOd1cS`,
     caption: 'BACK TO THE FUTURE',
     sources: [
       {
-        url: `http://cms-worldin.economist.com/sites/default/files/styles/
-1190x560l/public/TWI_2016_D.jpg?itok=cAYSYWwq`,
+        url: 'http://placekitten.com/1190/560',
         width: 1190,
         height: 560,
         dppx: 1,
       },
       {
-        url: `http://cms-worldin.economist.com/sites/default/files/styles/
-480x390p/public/TWI_2016_M.jpg?itok=XN3EVIIv`,
+        url: 'http://placekitten.com/480/390',
         width: 480,
         height: 390,
         dppx: 1,
@@ -83,7 +78,7 @@ public/S%26T-The-year-of-the-organoid-1440x1170.jpg?itok=vAGOd1cS`,
     caption: 'TARTAR SOURCE',
     sources: [
       {
-        url: 'http://world-if-stage.elasticbeanstalk.com/assets/3ff076cc.svg',
+        url: 'http://placekitten.com/2000/1136',
         width: 2000,
         height: 1136,
         dppx: 1,
