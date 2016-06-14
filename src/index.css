@@ -1,5 +1,12 @@
 @import '@economist/component-scenechanger';
 
+.picture__image,
+.picture__object {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .gallery {
   width: 100%;
   margin-bottom: 20px;
